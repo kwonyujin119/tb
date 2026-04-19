@@ -3,410 +3,223 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Today Best — 인천소방학교 ICTC</title>
+<title>Today Best — 인천소방학교 ICTC 권유진</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cmd-primary: #1A5FAB;
-  --cmd-light: #D6EAFA;
-  --cmd-dark: #0C3D7A;
-  --cmd-accent: #3B8DD4;
-  --edu-primary: #1D9E75;
-  --edu-light: #D4F0E5;
-  --edu-dark: #0F6E56;
-  --edu-accent: #5DCAA5;
-  --tch-primary: #D63864;
-  --tch-light: #FCE0E9;
-  --tch-dark: #A32D4E;
-  --tch-accent: #F07096;
-  --gray-900: #111827;
-  --gray-800: #1F2937;
-  --gray-700: #374151;
-  --gray-100: #F3F4F6;
-  --gray-50: #F9FAFB;
-  --white: #FFFFFF;
+  --cmd: #1A5FAB; --cmd-l: #D6EAFA; --cmd-d: #0C3D7A; --cmd-a: #4B9AD4;
+  --edu: #1D9E75; --edu-l: #D4F0E5; --edu-d: #0F6E56; --edu-a: #5DCAA5;
+  --tch: #C8365A; --tch-l: #FCE0E9; --tch-d: #921E3D; --tch-a: #E86A8A;
+  --gbk: #7C4DDB; --gbk-l: #EDE7FF; --gbk-d: #4A2EA8; --gbk-a: #A07AE8;
+  --g900: #111827; --g800: #1F2937; --g700: #374151; --g600: #4B5563;
+  --g300: #D1D5DB; --g100: #F3F4F6; --g50: #F9FAFB; --white: #FFFFFF;
 }
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-html, body { width:100%; min-height:100vh; overflow-x:hidden; }
-
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: #0a0a0f;
-  color: var(--gray-900);
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;min-height:100vh;overflow-x:hidden;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g900);}
 
 /* ── LANDING ── */
-#landing {
-  position: fixed; inset: 0; z-index: 1000;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-end;
-  cursor: pointer;
-  overflow: hidden;
-}
+#landing{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;cursor:pointer;overflow:hidden;}
+#landing-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s ease,filter .4s;}
+#landing:hover #landing-img{transform:scale(1.03);}
+#landing-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.05) 100%);}
+#landing-cta{position:relative;z-index:2;text-align:center;padding-bottom:52px;}
+#landing-cta h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,5.5rem);color:#fff;letter-spacing:.06em;line-height:1;text-shadow:0 2px 24px rgba(0,0,0,.5);}
+#landing-cta .sub{font-size:clamp(.75rem,2.2vw,.95rem);color:rgba(255,255,255,.7);letter-spacing:.15em;margin:8px 0 32px;font-weight:300;}
+#landing-cta .enter-btn{display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--g900);padding:15px 36px;border-radius:100px;font-size:.95rem;font-weight:700;letter-spacing:.04em;box-shadow:0 8px 32px rgba(0,0,0,.4);animation:pulsebtn 2.2s ease-in-out infinite;}
+@keyframes pulsebtn{0%,100%{transform:scale(1);}50%{transform:scale(1.04);box-shadow:0 12px 40px rgba(0,0,0,.5);}}
+#landing.out{animation:landOut .65s cubic-bezier(.7,0,1,1) forwards;pointer-events:none;}
+@keyframes landOut{0%{opacity:1;transform:scale(1);}100%{opacity:0;transform:scale(1.07);}}
 
-#landing-img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transition: transform 0.6s ease, filter 0.6s ease;
-}
-
-#landing:hover #landing-img { transform: scale(1.02); }
-
-#landing-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.1) 100%);
-}
-
-#landing-cta {
-  position: relative; z-index: 2;
-  text-align: center;
-  padding-bottom: 48px;
-}
-
-#landing-cta h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.8rem, 8vw, 5rem);
-  color: white;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
-}
-
-#landing-cta .sub {
-  font-size: clamp(0.75rem, 2.5vw, 1rem);
-  color: rgba(255,255,255,0.75);
-  letter-spacing: 0.15em;
-  margin-top: 6px;
-  margin-bottom: 28px;
-  font-weight: 300;
-}
-
-#landing-cta .btn-enter {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: white; color: var(--gray-900);
-  padding: 14px 32px; border-radius: 100px;
-  font-size: 0.95rem; font-weight: 700;
-  letter-spacing: 0.05em;
-  animation: pulse-btn 2s ease-in-out infinite;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-
-@keyframes pulse-btn {
-  0%,100% { transform: scale(1); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
-  50% { transform: scale(1.04); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-}
-
-.btn-enter .arrow {
-  width: 20px; height: 20px;
-  border-radius: 50%; background: var(--gray-900);
-  display: flex; align-items: center; justify-content: center;
-  color: white; font-size: 12px;
-}
-
-#landing.hidden {
-  animation: landingOut 0.7s cubic-bezier(0.7,0,1,1) forwards;
-  pointer-events: none;
-}
-@keyframes landingOut {
-  0% { opacity:1; transform: scale(1); }
-  100% { opacity:0; transform: scale(1.08); }
-}
-
-/* ── MAIN APP ── */
-#app {
-  display: none;
-  min-height: 100vh;
-  background: var(--gray-50);
-}
-#app.visible { display: block; animation: fadeInApp 0.5s ease 0.4s both; }
-@keyframes fadeInApp { from { opacity:0; } to { opacity:1; } }
+/* ── APP ── */
+#app{display:none;min-height:100vh;}
+#app.on{display:flex;flex-direction:column;animation:fadeApp .5s ease .4s both;}
+@keyframes fadeApp{from{opacity:0;}to{opacity:1;}}
 
 /* ── HEADER ── */
-.app-header {
-  background: var(--gray-900);
-  padding: 16px 20px 0;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-}
+.hdr{background:var(--g900);padding:14px 20px 0;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.35);}
+.hdr-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:4px;}
+.hdr-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.9rem,5vw,2.9rem);color:#fff;letter-spacing:.06em;line-height:1;}
+.hdr-meta{text-align:right;}
+.hdr-sub{font-size:.7rem;color:rgba(255,255,255,.5);letter-spacing:.08em;line-height:1.7;}
+.hdr-ver{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.06em;}
 
-.header-top {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 14px;
-  flex-wrap: wrap; gap: 6px;
-}
+/* ── MAIN TABS ── */
+.main-tabs{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.main-tabs::-webkit-scrollbar{display:none;}
+.mtab{flex:1;min-width:72px;padding:11px 6px 13px;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:clamp(.68rem,2vw,.82rem);font-weight:700;letter-spacing:.02em;color:rgba(255,255,255,.4);cursor:pointer;border-bottom:3px solid transparent;transition:all .22s;white-space:nowrap;}
+.mtab:hover{color:rgba(255,255,255,.7);}
+.mtab.a-cmd{color:#78BFEE;border-bottom-color:var(--cmd);}
+.mtab.a-edu{color:#7DD9B5;border-bottom-color:var(--edu);}
+.mtab.a-tch{color:#F599B5;border-bottom-color:var(--tch);}
+.mtab.a-gbk{color:#C4A8F7;border-bottom-color:var(--gbk);}
+.tab-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle;}
+.d-cmd{background:var(--cmd);} .d-edu{background:var(--edu);} .d-tch{background:var(--tch);} .d-gbk{background:var(--gbk);}
 
-.header-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.8rem, 5vw, 2.8rem);
-  color: white; letter-spacing: 0.06em;
-  line-height: 1;
-}
+/* ── PANELS ── */
+.panel{display:none;flex:1;flex-direction:column;}
+.panel.on{display:flex;animation:panelSlide .3s ease;}
+@keyframes panelSlide{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-.header-version {
-  font-size: 0.7rem; color: rgba(255,255,255,0.45);
-  font-weight: 300; letter-spacing: 0.08em;
-  white-space: nowrap;
-}
+/* ── DAY SUB NAV ── */
+.day-nav-wrap{background:var(--g800);padding:0 16px;}
+.day-nav{display:flex;gap:0;max-width:860px;margin:0 auto;}
+.dtab{padding:11px 16px 12px;border:none;background:transparent;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;font-weight:500;color:rgba(255,255,255,.45);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.dtab:hover{color:rgba(255,255,255,.75);}
+.dtab.latest::after{content:'NEW';font-size:.5rem;background:#F59E0B;color:#fff;padding:1px 5px;border-radius:4px;margin-left:5px;font-weight:700;vertical-align:middle;}
+.dtab.da-cmd.on{color:#78BFEE;border-bottom-color:var(--cmd);}
+.dtab.da-edu.on{color:#7DD9B5;border-bottom-color:var(--edu);}
+.dtab.da-tch.on{color:#F599B5;border-bottom-color:var(--tch);}
 
-.header-sub {
-  font-size: 0.75rem; color: rgba(255,255,255,0.55);
-  letter-spacing: 0.08em; margin-top: 2px;
-  display: flex; align-items: center; gap: 6px;
-}
-.header-sub span { opacity: 0.4; }
+/* ── CONTENT AREA ── */
+.content-area{flex:1;overflow-y:auto;padding:20px 16px 80px;}
+.inner{max-width:860px;margin:0 auto;}
 
-/* ── TABS ── */
-.tab-nav {
-  display: flex; gap: 0;
-  margin-top: 4px;
-}
+/* ── DAY CONTENT ── */
+.day-content{display:none;}
+.day-content.on{display:block;animation:panelSlide .25s ease;}
 
-.tab-btn {
-  flex: 1; padding: 12px 8px 14px;
-  border: none; background: transparent;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: clamp(0.72rem, 2.2vw, 0.88rem);
-  font-weight: 700; letter-spacing: 0.03em;
-  color: rgba(255,255,255,0.45);
-  cursor: pointer;
-  border-bottom: 3px solid transparent;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-  position: relative;
-}
+/* ── PANEL HERO ── */
+.hero{border-radius:14px;padding:22px 20px;margin-bottom:18px;position:relative;overflow:hidden;}
+.hero::before{content:attr(data-bg);position:absolute;right:-12px;bottom:-18px;font-family:'Bebas Neue',sans-serif;font-size:120px;line-height:1;opacity:.08;color:#fff;pointer-events:none;}
+.h-cmd{background:linear-gradient(135deg,var(--cmd-d),var(--cmd));}
+.h-edu{background:linear-gradient(135deg,var(--edu-d),var(--edu));}
+.h-tch{background:linear-gradient(135deg,var(--tch-d),var(--tch));}
+.hero .badge{font-size:.65rem;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:6px;}
+.hero h2{font-size:clamp(1.2rem,3.5vw,1.75rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:5px;}
+.hero .tagline{font-size:.8rem;color:rgba(255,255,255,.65);line-height:1.55;font-weight:300;}
+.hero .day-badge{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:20px;margin-bottom:8px;}
 
-.tab-btn:hover { color: rgba(255,255,255,0.75); }
+/* ── CARD ── */
+.card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;margin-bottom:14px;}
+.card-top{display:flex;align-items:stretch;}
+.card-accent{min-width:54px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:#fff;line-height:1;}
+.ca-lbl{font-family:'Noto Sans KR',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.08em;opacity:.8;margin-top:2px;}
+.ac-cmd{background:var(--cmd);} .ac-edu{background:var(--edu);} .ac-tch{background:var(--tch);}
+.card-info{padding:13px 14px;flex:1;}
+.card-theory{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px;}
+.th-cmd{color:var(--cmd-a);} .th-edu{color:var(--edu-a);} .th-tch{color:var(--tch-a);}
+.card-info h3{font-size:clamp(.88rem,2.4vw,1.02rem);font-weight:700;color:var(--g900);line-height:1.3;margin-bottom:3px;}
+.card-info .eng{font-size:.65rem;color:#999;font-weight:300;}
+.card-body{padding:14px 14px 14px;}
 
-.tab-btn.active-cmd { color: #6BB8F0; border-bottom-color: var(--cmd-primary); }
-.tab-btn.active-edu { color: #7DD9B5; border-bottom-color: var(--edu-primary); }
-.tab-btn.active-tch { color: #F599B5; border-bottom-color: var(--tch-primary); }
+/* ── CONCEPT BOX ── */
+.concept{border-radius:8px;padding:11px 13px;font-size:.83rem;line-height:1.65;margin-bottom:12px;border-left:3px solid;}
+.cc-cmd{background:#EBF4FD;border-color:var(--cmd);color:var(--cmd-d);}
+.cc-edu{background:#E8F7F2;border-color:var(--edu);color:var(--edu-d);}
+.cc-tch{background:#FDEDF3;border-color:var(--tch);color:var(--tch-d);}
 
-.tab-indicator {
-  width: 8px; height: 8px; border-radius: 50%;
-  display: inline-block; margin-right: 6px;
-  vertical-align: middle;
-}
-.ind-cmd { background: var(--cmd-primary); }
-.ind-edu { background: var(--edu-primary); }
-.ind-tch { background: var(--tch-primary); }
+/* ── POINTS ── */
+.pts{display:flex;flex-direction:column;gap:7px;margin-bottom:12px;}
+.pt{display:flex;gap:9px;align-items:flex-start;}
+.pdot{min-width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px;}
+.pd-cmd{background:var(--cmd);} .pd-edu{background:var(--edu);} .pd-tch{background:var(--tch);}
+.ptext{font-size:.81rem;color:var(--g700);line-height:1.55;}
 
-/* ── CONTENT PANELS ── */
-.tab-panel { display: none; padding: 20px 16px 60px; max-width: 860px; margin: 0 auto; }
-.tab-panel.active { display: block; animation: panelIn 0.35s ease; }
-@keyframes panelIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+/* ── TAKEAWAY ── */
+.tw{border-radius:8px;padding:10px 13px;background:#EEEDFE;border:1px solid #C5C2F0;}
+.tw-lbl{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:#534AB7;text-transform:uppercase;margin-bottom:3px;}
+.tw-text{font-size:.81rem;color:#3C3489;line-height:1.6;font-weight:500;}
 
-/* ── PANEL HEADER ── */
-.panel-hero {
-  border-radius: 16px; padding: 24px 20px;
-  margin-bottom: 20px;
-  position: relative; overflow: hidden;
-}
-.panel-hero::before {
-  content: attr(data-num);
-  position: absolute; right: -10px; bottom: -20px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 130px; line-height: 1;
-  opacity: 0.08; color: white;
-  pointer-events: none; letter-spacing: -0.02em;
-}
+/* ── SMEAC ── */
+.smeac-list{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.si{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.07);}
+.si-l{min-width:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 5px;font-size:1rem;font-weight:900;line-height:1;}
+.si-sub{font-size:.48rem;font-weight:400;}
+.ls{background:#FAECE7;color:#712B13;} .lm{background:#FFF3E0;color:#6D3200;}
+.le{background:#FAEEDA;color:#633806;} .la{background:#EAF3DE;color:#27500A;} .lc{background:#E6F1FB;color:#0C447C;}
+.si-c{padding:8px 11px;flex:1;}
+.si-t{font-size:.77rem;font-weight:700;color:var(--g900);margin-bottom:2px;}
+.si-e{font-size:.71rem;color:#666;line-height:1.45;}
 
-.hero-cmd { background: linear-gradient(135deg, var(--cmd-dark) 0%, var(--cmd-primary) 100%); }
-.hero-edu { background: linear-gradient(135deg, var(--edu-dark) 0%, var(--edu-primary) 100%); }
-.hero-tch { background: linear-gradient(135deg, var(--tch-dark) 0%, var(--tch-primary) 100%); }
+/* ── BLOOM ── */
+.bloom{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+.blrow{display:flex;align-items:stretch;border-radius:6px;overflow:hidden;border:1px solid rgba(0,0,0,.07);}
+.bllv{min-width:48px;display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;padding:8px 4px;text-align:center;}
+.bl1{background:#E6F1FB;color:#0C447C;} .bl2{background:#EAF3DE;color:#27500A;}
+.bl3{background:#FAEEDA;color:#633806;} .bl4{background:#EEEDFE;color:#3C3489;}
+.bl5{background:#FAECE7;color:#712B13;} .bl6{background:#E24B4A;color:#FCEBEB;}
+.blc{padding:8px 11px;flex:1;}
+.bla{font-size:.77rem;font-weight:700;color:var(--g900);}
+.ble{font-size:.69rem;color:#666;}
 
-.panel-hero .badge {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.7); text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.panel-hero h2 {
-  font-size: clamp(1.3rem, 4vw, 1.9rem); font-weight: 900;
-  color: white; line-height: 1.25; margin-bottom: 6px;
-}
-.panel-hero p {
-  font-size: 0.82rem; color: rgba(255,255,255,0.7);
-  line-height: 1.6; font-weight: 300;
-}
+/* ── GAGNE ── */
+.gagne{display:flex;flex-direction:column;gap:4px;margin-bottom:12px;}
+.grow{display:flex;align-items:stretch;border:1px solid rgba(0,0,0,.07);border-radius:7px;overflow:hidden;}
+.gnum{min-width:30px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#fff;}
+.gn1,.gn2,.gn3{background:var(--cmd);} .gn4,.gn5,.gn6,.gn7{background:var(--edu);} .gn8,.gn9{background:var(--tch);}
+.gcnt{padding:8px 11px;flex:1;}
+.gt{font-size:.77rem;font-weight:700;color:var(--g900);}
+.ge{font-size:.69rem;color:#666;line-height:1.4;}
 
-/* ── DAY CARDS ── */
-.day-grid { display: flex; flex-direction: column; gap: 14px; }
+/* ── TYPE CHIPS ── */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px;}
+.chip{border-radius:8px;padding:9px 11px;border:1px solid rgba(0,0,0,.08);flex:1;min-width:110px;}
+.ch-name{font-size:.77rem;font-weight:700;color:var(--g900);margin-bottom:3px;}
+.ch-desc{font-size:.68rem;color:#666;line-height:1.4;}
+.ch-badge{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:20px;display:inline-block;margin-bottom:4px;}
+.bg{background:#E1F5EE;color:#085041;} .ba{background:#FAEEDA;color:#633806;} .bp{background:#EEEDFE;color:#3C3489;}
 
-.day-card {
-  background: white; border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.day-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+/* ── GUESTBOOK ── */
+.gbk-wrap{padding:20px 16px 80px;}
+.gbk-inner{max-width:860px;margin:0 auto;}
+.gbk-hero{background:linear-gradient(135deg,var(--gbk-d),var(--gbk));border-radius:14px;padding:22px 20px;margin-bottom:20px;position:relative;overflow:hidden;}
+.gbk-hero::before{content:"방명록";position:absolute;right:-10px;bottom:-16px;font-family:'Bebas Neue',sans-serif;font-size:100px;line-height:1;opacity:.07;color:#fff;pointer-events:none;}
+.gbk-hero .badge{font-size:.65rem;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:6px;}
+.gbk-hero h2{font-size:clamp(1.2rem,3.5vw,1.75rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:5px;}
+.gbk-hero p{font-size:.8rem;color:rgba(255,255,255,.65);}
 
-.day-header {
-  display: flex; align-items: stretch;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-}
+.form-card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);padding:18px 16px;margin-bottom:20px;}
+.form-title{font-size:.88rem;font-weight:700;color:var(--g900);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.form-title::before{content:'';width:3px;height:16px;border-radius:2px;background:var(--gbk);display:inline-block;}
+.form-row{margin-bottom:12px;}
+.form-label{font-size:.72rem;font-weight:700;color:var(--g700);letter-spacing:.05em;margin-bottom:5px;display:block;}
+.form-input{width:100%;padding:11px 13px;border:1.5px solid var(--g300);border-radius:8px;font-family:'Noto Sans KR',sans-serif;font-size:.85rem;color:var(--g900);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;}
+.form-input:focus{border-color:var(--gbk);box-shadow:0 0 0 3px rgba(124,77,219,.12);}
+.form-textarea{resize:vertical;min-height:100px;line-height:1.6;}
+.form-submit{width:100%;padding:13px;background:var(--gbk);color:#fff;border:none;border-radius:8px;font-family:'Noto Sans KR',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;letter-spacing:.04em;}
+.form-submit:hover{background:var(--gbk-d);}
+.form-submit:active{transform:scale(.98);}
 
-.day-num {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  min-width: 60px; padding: 14px 10px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem; line-height: 1;
-  color: white;
-}
-.day-num .day-label { font-family: 'Noto Sans KR', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; opacity: 0.8; margin-top: 2px; }
+.entries-title{font-size:.88rem;font-weight:700;color:var(--g900);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.entries-title::before{content:'';width:3px;height:16px;border-radius:2px;background:var(--gbk);display:inline-block;}
+.entry-count{font-size:.72rem;color:var(--gbk);font-weight:700;background:var(--gbk-l);padding:2px 8px;border-radius:20px;}
 
-.dn-cmd { background: var(--cmd-primary); }
-.dn-edu { background: var(--edu-primary); }
-.dn-tch { background: var(--tch-primary); }
+.entry-list{display:flex;flex-direction:column;gap:10px;}
+.entry-item{background:#fff;border-radius:10px;padding:14px 15px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:3px solid var(--gbk);animation:entryIn .3s ease;}
+@keyframes entryIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
+.entry-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.entry-name-wrap{display:flex;align-items:center;gap:8px;}
+.entry-avatar{width:30px;height:30px;border-radius:50%;background:var(--gbk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0;}
+.entry-name{font-size:.85rem;font-weight:700;color:var(--g900);}
+.entry-date{font-size:.68rem;color:#aaa;font-weight:300;}
+.entry-content{font-size:.82rem;color:var(--g700);line-height:1.65;}
+.entry-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:.75rem;transition:color .2s;padding:2px 6px;border-radius:4px;}
+.entry-del:hover{color:#E24B4A;background:#FCEBEB;}
 
-.day-title-block {
-  padding: 14px 16px; flex: 1;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.day-title-block .theory {
-  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 4px;
-}
-.theory-cmd { color: var(--cmd-accent); }
-.theory-edu { color: var(--edu-accent); }
-.theory-tch { color: var(--tch-accent); }
+.empty-state{text-align:center;padding:40px 20px;color:#aaa;}
+.empty-icon{font-size:2.5rem;margin-bottom:12px;opacity:.5;}
+.empty-text{font-size:.83rem;font-weight:500;color:#bbb;}
 
-.day-title-block h3 { font-size: clamp(0.9rem, 2.5vw, 1.05rem); font-weight: 700; color: var(--gray-900); line-height: 1.3; }
-.day-title-block .eng { font-size: 0.68rem; color: #888; margin-top: 3px; font-weight: 300; }
-
-.day-body { padding: 16px 16px 16px 16px; }
-
-.concept {
-  border-radius: 8px; padding: 12px 14px;
-  font-size: 0.83rem; line-height: 1.65;
-  margin-bottom: 14px; border-left: 3px solid;
-}
-.concept-cmd { background: #EBF4FD; border-color: var(--cmd-primary); color: var(--cmd-dark); }
-.concept-edu { background: #E8F7F2; border-color: var(--edu-primary); color: var(--edu-dark); }
-.concept-tch { background: #FDE8EF; border-color: var(--tch-primary); color: var(--tch-dark); }
-
-.points { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
-.point-row { display: flex; gap: 10px; align-items: flex-start; }
-.point-dot {
-  min-width: 20px; height: 20px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem; font-weight: 700; color: white; flex-shrink: 0; margin-top: 1px;
-}
-.pd-cmd { background: var(--cmd-primary); }
-.pd-edu { background: var(--edu-primary); }
-.pd-tch { background: var(--tch-primary); }
-.point-text { font-size: 0.82rem; color: var(--gray-700); line-height: 1.55; }
-
-.takeaway {
-  border-radius: 8px; padding: 11px 13px;
-  background: #EEEDFE; border: 1px solid #C5C2F0;
-}
-.tk-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; color: #534AB7; text-transform: uppercase; margin-bottom: 4px; }
-.tk-text { font-size: 0.82rem; color: #3C3489; line-height: 1.6; font-weight: 500; }
-
-/* ── SMEAC special ── */
-.smeac-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-.smeac-item { display: flex; align-items: stretch; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); }
-.smeac-letter { min-width: 38px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 6px; font-size: 1.1rem; font-weight: 900; }
-.smeac-sub { font-size: 0.5rem; font-weight: 400; letter-spacing: 0.03em; }
-.sl-s { background: #FAECE7; color: #712B13; }
-.sl-m { background: #FFF3E0; color: #6D3200; }
-.sl-e { background: #FAEEDA; color: #633806; }
-.sl-a { background: #EAF3DE; color: #27500A; }
-.sl-c { background: #E6F1FB; color: #0C447C; }
-.smeac-content { padding: 8px 12px; flex: 1; }
-.smeac-title { font-size: 0.78rem; font-weight: 700; color: var(--gray-900); margin-bottom: 2px; }
-.smeac-ex { font-size: 0.72rem; color: #666; line-height: 1.5; }
-
-/* ── BLOOM special ── */
-.bloom-stack { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
-.bloom-row { display: flex; align-items: stretch; border-radius: 6px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); }
-.bloom-lv { min-width: 50px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; padding: 8px 6px; text-align: center; }
-.bl1 { background: #E6F1FB; color: #0C447C; }
-.bl2 { background: #EAF3DE; color: #27500A; }
-.bl3 { background: #FAEEDA; color: #633806; }
-.bl4 { background: #EEEDFE; color: #3C3489; }
-.bl5 { background: #FAECE7; color: #712B13; }
-.bl6 { background: #E24B4A; color: #FCEBEB; }
-.bloom-cnt { padding: 8px 12px; flex: 1; }
-.bloom-action { font-size: 0.78rem; font-weight: 700; color: var(--gray-900); }
-.bloom-ex { font-size: 0.7rem; color: #666; }
-
-/* ── GAGNE special ── */
-.gagne-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
-.gagne-row { display: flex; align-items: stretch; border: 1px solid rgba(0,0,0,0.07); border-radius: 7px; overflow: hidden; }
-.gagne-num { min-width: 32px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: white; }
-.gn1,.gn2,.gn3 { background: var(--cmd-primary); }
-.gn4,.gn5,.gn6,.gn7 { background: var(--edu-primary); }
-.gn8,.gn9 { background: var(--tch-primary); }
-.gagne-cnt { padding: 8px 11px; flex: 1; }
-.gagne-title { font-size: 0.78rem; font-weight: 700; color: var(--gray-900); }
-.gagne-ex { font-size: 0.7rem; color: #666; line-height: 1.4; }
-
-/* ── DISCUSSION special ── */
-.type-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-.type-chip { border-radius: 8px; padding: 8px 12px; border: 1px solid rgba(0,0,0,0.08); flex: 1; min-width: 120px; }
-.tc-name { font-size: 0.78rem; font-weight: 700; color: var(--gray-900); margin-bottom: 3px; }
-.tc-desc { font-size: 0.69rem; color: #666; line-height: 1.4; }
-.tc-badge { font-size: 0.6rem; font-weight: 700; padding: 2px 7px; border-radius: 20px; display: inline-block; margin-bottom: 4px; }
-.b-g { background: #E1F5EE; color: #085041; }
-.b-a { background: #FAEEDA; color: #633806; }
-.b-p { background: #EEEDFE; color: #3C3489; }
+/* ── BACK BTN ── */
+.back-btn{position:fixed;bottom:20px;right:16px;background:var(--g900);color:#fff;border:none;border-radius:100px;padding:10px 18px;font-size:.76rem;font-family:'Noto Sans KR',sans-serif;font-weight:500;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:none;z-index:200;align-items:center;gap:6px;transition:background .2s;}
+.back-btn.show{display:flex;}
+.back-btn:hover{background:#333;}
 
 /* ── FOOTER ── */
-.app-footer {
-  background: var(--gray-900); color: rgba(255,255,255,0.4);
-  text-align: center; padding: 20px;
-  font-size: 0.72rem; letter-spacing: 0.08em;
-  font-weight: 300;
-}
+.app-footer{background:var(--g900);color:rgba(255,255,255,.3);text-align:center;padding:18px 20px;font-size:.7rem;letter-spacing:.08em;font-weight:300;}
 
 /* ── RESPONSIVE ── */
-@media (min-width: 640px) {
-  .tab-panel { padding: 28px 24px 80px; }
-  .day-num { min-width: 72px; font-size: 2rem; }
-  .day-title-block h3 { font-size: 1.1rem; }
-  .concept { font-size: 0.88rem; }
-  .point-text { font-size: 0.85rem; }
+@media(min-width:640px){
+  .hdr{padding:18px 28px 0;}
+  .content-area,.gbk-wrap{padding:24px 24px 80px;}
+  .day-nav-wrap{padding:0 24px;}
 }
-
-@media (min-width: 860px) {
-  .app-header { padding: 20px 32px 0; }
-  .tab-panel { padding: 32px 32px 80px; }
-  .header-title { font-size: 3rem; }
+@media(min-width:860px){
+  .hdr{padding:20px 32px 0;}
+  .content-area,.gbk-wrap{padding:28px 32px 80px;}
+  .day-nav-wrap{padding:0 32px;}
 }
-
-/* ── SERIES PROGRESS ── */
-.series-nav {
-  display: flex; align-items: center; gap: 8px;
-  margin-bottom: 16px; flex-wrap: wrap;
-}
-.sn-item {
-  font-size: 0.7rem; padding: 4px 10px; border-radius: 20px;
-  border: 1px solid rgba(0,0,0,0.1); color: #888;
-  font-weight: 500;
-}
-.sn-active-cmd { background: var(--cmd-primary); color: white; border-color: var(--cmd-primary); }
-.sn-active-edu { background: var(--edu-primary); color: white; border-color: var(--edu-primary); }
-.sn-active-tch { background: var(--tch-primary); color: white; border-color: var(--tch-primary); }
-
-/* ── BACK BUTTON ── */
-.back-btn {
-  position: fixed; bottom: 20px; right: 20px;
-  background: var(--gray-900); color: white;
-  border: none; border-radius: 100px;
-  padding: 10px 18px; font-size: 0.78rem;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 500; cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-  display: none; z-index: 200;
-  transition: background 0.2s;
-}
-.back-btn.show { display: flex; align-items: center; gap: 6px; }
-.back-btn:hover { background: #333; }
 </style>
 </head>
 <body>
@@ -417,341 +230,508 @@ body {
   <div id="landing-overlay"></div>
   <div id="landing-cta">
     <h1>TODAY BEST</h1>
-    <p class="sub">인천소방학교 · 지휘역량강화센터 · 권유진</p>
-    <div class="btn-enter">
-      <span>설명해줄테니까, 어서타!</span>
-      <span class="arrow">▶</span>
-    </div>
+    <p class="sub">인천소방학교 &nbsp;·&nbsp; 지휘역량강화센터(ICTC) &nbsp;·&nbsp; 권유진</p>
+    <div class="enter-btn">설명해줄테니까, 어서타! &nbsp; ▶</div>
   </div>
 </div>
 
-<!-- ── MAIN APP ── -->
+<!-- ── APP ── -->
 <div id="app">
-  <header class="app-header">
-    <div class="header-top">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-top">
       <div>
-        <div class="header-title">TODAY BEST</div>
-        <div class="header-sub">
-          인천소방학교 <span>·</span> 지휘역량강화센터(ICTC) <span>·</span> 권유진
-        </div>
+        <div class="hdr-title">TODAY BEST</div>
       </div>
-      <div class="header-version">v.26.4.1</div>
+      <div class="hdr-meta">
+        <div class="hdr-sub">인천소방학교 · ICTC · 권유진</div>
+        <div class="hdr-ver">v.26.4.1</div>
+      </div>
     </div>
-    <nav class="tab-nav">
-      <button class="tab-btn active-cmd" onclick="switchTab('cmd',this)">
-        <span class="tab-indicator ind-cmd"></span>현장지휘관
-      </button>
-      <button class="tab-btn" onclick="switchTab('edu',this)">
-        <span class="tab-indicator ind-edu"></span>교육학
-      </button>
-      <button class="tab-btn" onclick="switchTab('tch',this)">
-        <span class="tab-indicator ind-tch"></span>교수법
-      </button>
+    <nav class="main-tabs" id="mainTabs">
+      <button class="mtab a-cmd" onclick="switchMain('cmd',this)"><span class="tab-dot d-cmd"></span>현장지휘관</button>
+      <button class="mtab" onclick="switchMain('edu',this)"><span class="tab-dot d-edu"></span>교육학</button>
+      <button class="mtab" onclick="switchMain('tch',this)"><span class="tab-dot d-tch"></span>교수법</button>
+      <button class="mtab" onclick="switchMain('gbk',this)"><span class="tab-dot d-gbk"></span>방명록</button>
     </nav>
   </header>
 
-  <!-- ── TAB 1: 현장지휘관 ── -->
-  <div id="panel-cmd" class="tab-panel active">
-    <div class="panel-hero hero-cmd" data-num="1">
-      <div class="badge">Today 3분 현장지휘관</div>
-      <h2>현장을 지배하는<br>지휘관의 3가지 원칙</h2>
-      <p>SA로 읽고 · NDM으로 결정하고 · SMEAC으로 전달한다</p>
-    </div>
-
-    <div class="series-nav">
-      <span class="sn-item sn-active-cmd">Day 1 상황인식</span>
-      <span class="sn-item sn-active-cmd">Day 2 자연주의적 의사결정</span>
-      <span class="sn-item sn-active-cmd">Day 3 SMEAC</span>
-    </div>
-
-    <div class="day-grid">
-      <!-- Day 1 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-cmd">1<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-cmd">Situation Awareness · Endsley, 1995</div>
-            <h3>현장지휘관의 첫 임무는 "상황인식(SA)"이다</h3>
-            <div class="eng">도착 후 진압보다 파악이 먼저</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-cmd">현장에 도착하면 <strong>진압보다 파악이 먼저</strong>입니다. 잘못된 상황인식 위에서 내린 결정은, 아무리 빨라도 대원의 안전을 위협합니다.</div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-cmd">1</div><div class="point-text"><strong>1단계 지각</strong> — 화점·연기·요구조자·진입로 정보 오감으로 수집</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">2</div><div class="point-text"><strong>2단계 이해</strong> — "이 연기 색·방향이 의미하는 것은 무엇인가?" 해석</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">3</div><div class="point-text"><strong>3단계 예측</strong> — "30초 후 이 건물은 어떻게 되는가?" 전개 예측</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">✓</div><div class="point-text">도착 후 <strong>60초 관찰 루틴</strong>을 모든 훈련에서 표준화하라</div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"60초 관찰이 대원의 60분 안전을 만든다."</div></div>
-        </div>
-      </div>
-
-      <!-- Day 2 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-cmd">2<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-cmd">Naturalistic Decision Making · Klein, 1993</div>
-            <h3>지휘관은 어떻게 결정하는가 — 자연주의적 의사결정(NDM)</h3>
-            <div class="eng">패턴 인식 → 시뮬레이션 → 실행</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-cmd">숙련 지휘관은 대안을 비교하지 않습니다. <strong>경험에서 패턴을 인식하고, 첫 번째 좋은 안을 즉시 실행</strong>합니다. 그 속도는 경험이 만듭니다.</div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-cmd">1</div><div class="point-text"><strong>분석형</strong>(느림): 모든 대안 비교 → 최선 선택 → 현장에서 치명적으로 느림</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">2</div><div class="point-text"><strong>RPD형</strong>(숙련): 패턴 인식 → 머릿속 시뮬레이션 → 실행 or 수정</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">3</div><div class="point-text">다양한 사례 노출이 RPD 속도를 높이는 유일한 방법</div></div>
-            <div class="point-row"><div class="point-dot pd-cmd">4</div><div class="point-text">디브리핑에서 <strong>"왜 그 결정을?"</strong>을 반드시 물어라</div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"최선을 고르는 것이 아니라, 첫 번째 좋은 안을 빠르게 실행하는 것이 숙련 지휘관입니다."</div></div>
-        </div>
-      </div>
-
-      <!-- Day 3 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-cmd">3<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-cmd">SMEAC · SOP 105 기반</div>
-            <h3>지휘관의 말 한마디가 대원의 생사를 가른다 — SMEAC</h3>
-            <div class="eng">5단계 구조화 명령 전달 틀</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-cmd">SA로 읽고 NDM으로 결정해도 <strong>명령이 정확하게 전달되지 않으면 아무 의미가 없습니다.</strong> 모호한 지시 한마디가 대원을 위험에 빠뜨립니다.</div>
-          <div class="smeac-list">
-            <div class="smeac-item"><div class="smeac-letter sl-s">S<div class="smeac-sub">Situation</div></div><div class="smeac-content"><div class="smeac-title">상황 — 지금 무슨 일인가?</div><div class="smeac-ex">"3층 302호 화재 진행 중, 연기 4층 확대 우려, 요구조자 1명 추정."</div></div></div>
-            <div class="smeac-item"><div class="smeac-letter sl-m">M<div class="smeac-sub">Mission</div></div><div class="smeac-content"><div class="smeac-title">임무 — 무엇을 해야 하는가?</div><div class="smeac-ex">"1분대는 3층 내부 진입하여 인명검색 및 화재진압 실시."</div></div></div>
-            <div class="smeac-item"><div class="smeac-letter sl-e">E<div class="smeac-sub">Execution</div></div><div class="smeac-content"><div class="smeac-title">실행 — 어떻게 수행하는가?</div><div class="smeac-ex">"주계단 통해 3층 진입, 우측 방향 검색. 관창 1개 연장. 완료 즉시 보고."</div></div></div>
-            <div class="smeac-item"><div class="smeac-letter sl-a">A<div class="smeac-sub">Administration</div></div><div class="smeac-content"><div class="smeac-title">행정·지원 — 지원 사항은?</div><div class="smeac-ex">"2분대 직전대기, 공기호흡기 여분 3층 계단 배치. 의료팀 1층 대기."</div></div></div>
-            <div class="smeac-item"><div class="smeac-letter sl-c">C<div class="smeac-sub">Command</div></div><div class="smeac-content"><div class="smeac-title">지휘·통신 — 누구에게 보고하는가?</div><div class="smeac-ex">"지휘소 건물 정면. 지휘망 3채널. 이상 발생 시 즉시 우선교신."</div></div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"SMEAC 한 번 더 익히는 것이 대원 한 명을 살립니다."</div></div>
-        </div>
+  <!-- ══ PANEL: 현장지휘관 ══ -->
+  <div class="panel on" id="panel-cmd">
+    <div class="day-nav-wrap">
+      <div class="day-nav">
+        <button class="dtab da-cmd on" onclick="switchDay('cmd',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">SMEAC</span></button>
+        <button class="dtab da-cmd latest" onclick="switchDay('cmd',3,this)" style="display:none"></button>
+        <button class="dtab da-cmd" onclick="switchDay('cmd',2,this)">Day 2 <span style="opacity:.5;font-size:.7em;">NDM</span></button>
+        <button class="dtab da-cmd" onclick="switchDay('cmd',1,this)">Day 1 <span style="opacity:.5;font-size:.7em;">SA</span></button>
       </div>
     </div>
-  </div>
+    <div class="content-area">
+      <div class="inner">
 
-  <!-- ── TAB 2: 교육학 ── -->
-  <div id="panel-edu" class="tab-panel">
-    <div class="panel-hero hero-edu" data-num="2">
-      <div class="badge">Today 3분 교육학</div>
-      <h2>교수역량을 완성하는<br>교육학 3대 이론</h2>
-      <p>누구에게 · 무엇을 · 어떻게 — 수업 설계의 완전한 체계</p>
-    </div>
+        <!-- CMD Day 3 -->
+        <div class="day-content on" id="cmd-day-3">
+          <div class="hero h-cmd" data-bg="3">
+            <div class="day-badge">DAY 3 · 최신</div>
+            <div class="badge">Today 3분 현장지휘관</div>
+            <h2>지휘관의 말 한마디가<br>대원의 생사를 가른다</h2>
+            <p class="tagline">SMEAC — 5단계 구조화 명령 전달법</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-cmd">3<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-cmd">SMEAC · SOP 105 기반</div>
+                <h3>현장 명령 전달법 — SMEAC</h3>
+                <div class="eng">5단계 구조화 명령 전달 틀</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-cmd">SA로 읽고 NDM으로 결정해도 <strong>명령이 정확하게 전달되지 않으면 아무 의미가 없습니다.</strong> 모호한 지시 한마디가 대원을 위험에 빠뜨립니다.</div>
+              <div class="smeac-list">
+                <div class="si"><div class="si-l ls">S<div class="si-sub">Situation</div></div><div class="si-c"><div class="si-t">상황 — 지금 무슨 일인가?</div><div class="si-e">"3층 302호 화재 진행 중, 연기 4층 확대 우려, 요구조자 1명 추정."</div></div></div>
+                <div class="si"><div class="si-l lm">M<div class="si-sub">Mission</div></div><div class="si-c"><div class="si-t">임무 — 무엇을 해야 하는가?</div><div class="si-e">"1분대는 3층 내부 진입하여 인명검색 및 화재진압 실시."</div></div></div>
+                <div class="si"><div class="si-l le">E<div class="si-sub">Execution</div></div><div class="si-c"><div class="si-t">실행 — 어떻게 수행하는가?</div><div class="si-e">"주계단 통해 3층 진입, 우측 방향 검색. 관창 1개 연장. 완료 즉시 보고."</div></div></div>
+                <div class="si"><div class="si-l la">A<div class="si-sub">Administration</div></div><div class="si-c"><div class="si-t">행정·지원 — 지원 사항은?</div><div class="si-e">"2분대 직전대기, 공기호흡기 여분 3층 계단 배치. 의료팀 1층 대기."</div></div></div>
+                <div class="si"><div class="si-l lc">C<div class="si-sub">Command</div></div><div class="si-c"><div class="si-t">지휘·통신 — 누구에게 보고하는가?</div><div class="si-e">"지휘소 건물 정면. 지휘망 3채널. 이상 발생 시 즉시 우선교신."</div></div></div>
+              </div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-cmd">1</div><div class="ptext">모든 시나리오 훈련에서 <strong>SMEAC 형식으로 명령</strong>하게 하세요</div></div>
+                <div class="pt"><div class="pdot pd-cmd">2</div><div class="ptext"><strong>복명복창</strong>을 습관화하세요 — 현장에서 복창 없는 교신은 미완성 교신</div></div>
+                <div class="pt"><div class="pdot pd-cmd">3</div><div class="ptext">디브리핑에서 <strong>"임무와 실행이 구분됐나?"</strong>로 교육생 스스로 점검</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"SMEAC 한 번 더 익히는 것이 대원 한 명을 살립니다."</div></div>
+            </div>
+          </div>
+        </div>
 
-    <div class="series-nav">
-      <span class="sn-item sn-active-edu">Day 1 안드라고지</span>
-      <span class="sn-item sn-active-edu">Day 2 블룸 분류학</span>
-      <span class="sn-item sn-active-edu">Day 3 가네 수업사태</span>
-    </div>
+        <!-- CMD Day 2 -->
+        <div class="day-content" id="cmd-day-2">
+          <div class="hero h-cmd" data-bg="2">
+            <div class="day-badge">DAY 2</div>
+            <div class="badge">Today 3분 현장지휘관</div>
+            <h2>지휘관은 어떻게 결정하는가<br>— 자연주의적 의사결정(NDM)</h2>
+            <p class="tagline">패턴 인식 → 시뮬레이션 → 실행 · Gary Klein, 1993</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-cmd">2<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-cmd">Naturalistic Decision Making · Klein, 1993</div>
+                <h3>자연주의적 의사결정 — NDM</h3>
+                <div class="eng">빠른 결정의 과학</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-cmd">숙련 지휘관은 대안을 비교하지 않습니다. <strong>경험에서 패턴을 인식하고, 첫 번째 좋은 안을 즉시 실행</strong>합니다. 그 속도는 경험이 만듭니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-cmd">✗</div><div class="ptext"><strong>분석형(느림)</strong> — 모든 대안 비교 → 최선 선택 → 현장에서 치명적으로 느림</div></div>
+                <div class="pt"><div class="pdot pd-cmd">✓</div><div class="ptext"><strong>RPD형(숙련)</strong> — 패턴 인식 → 머릿속 시뮬레이션 → 실행 or 수정</div></div>
+                <div class="pt"><div class="pdot pd-cmd">1</div><div class="ptext">다양한 사례 노출이 RPD 속도를 높이는 유일한 방법</div></div>
+                <div class="pt"><div class="pdot pd-cmd">2</div><div class="ptext">디브리핑에서 <strong>"왜 그 결정을?"</strong>을 반드시 물어라</div></div>
+                <div class="pt"><div class="pdot pd-cmd">3</div><div class="ptext">시나리오 훈련 평가는 결론보다 <strong>결정 과정</strong>을 기준으로</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"최선을 고르는 것이 아니라, 첫 번째 좋은 안을 빠르게 실행하는 것이 숙련 지휘관입니다."</div></div>
+            </div>
+          </div>
+        </div>
 
-    <div class="day-grid">
-      <!-- Day 1 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-edu">1<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-edu">Malcolm Knowles · Andragogy, 1970</div>
-            <h3>성인학습자를 어떻게 가르칠 것인가 — 안드라고지</h3>
-            <div class="eng">누구에게 가르치는가</div>
+        <!-- CMD Day 1 -->
+        <div class="day-content" id="cmd-day-1">
+          <div class="hero h-cmd" data-bg="1">
+            <div class="day-badge">DAY 1</div>
+            <div class="badge">Today 3분 현장지휘관</div>
+            <h2>현장지휘관의 첫 임무는<br>"상황인식(SA)"이다</h2>
+            <p class="tagline">도착 후 진압보다 파악이 먼저 · Endsley, 1995</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-cmd">1<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-cmd">Situation Awareness · Endsley, 1995</div>
+                <h3>상황인식(SA) 3단계 모델</h3>
+                <div class="eng">읽어야 결정할 수 있다</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-cmd">현장에 도착하면 <strong>진압보다 파악이 먼저</strong>입니다. 잘못된 상황인식 위에서 내린 결정은, 아무리 빨라도 대원의 안전을 위협합니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-cmd">1</div><div class="ptext"><strong>1단계 지각</strong> — 화점·연기·요구조자·진입로 정보를 오감으로 수집</div></div>
+                <div class="pt"><div class="pdot pd-cmd">2</div><div class="ptext"><strong>2단계 이해</strong> — "이 연기 색·방향이 의미하는 것은 무엇인가?" 해석</div></div>
+                <div class="pt"><div class="pdot pd-cmd">3</div><div class="ptext"><strong>3단계 예측</strong> — "30초 후 이 건물은 어떻게 되는가?" 전개 예측</div></div>
+                <div class="pt"><div class="pdot pd-cmd">✓</div><div class="ptext">도착 후 <strong>60초 관찰 루틴</strong>을 모든 훈련에서 표준화하라</div></div>
+                <div class="pt"><div class="pdot pd-cmd">✓</div><div class="ptext">SA 붕괴 시나리오(무선 두절·시야 차단)를 훈련에 반드시 삽입하라</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"60초 관찰이 대원의 60분 안전을 만든다."</div></div>
+            </div>
           </div>
         </div>
-        <div class="day-body">
-          <div class="concept concept-edu">소방공무원 교육생은 <strong>이미 풍부한 현장경험을 가진 성인학습자</strong>입니다. 성인은 <strong>"왜 배우는가"</strong>가 명확할 때 학습 몰입도가 극대화됩니다.</div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-edu">1</div><div class="point-text"><strong>자기주도성</strong> — 스스로 학습을 통제하고 싶어함</div></div>
-            <div class="point-row"><div class="point-dot pd-edu">2</div><div class="point-text"><strong>경험 자원</strong> — 현장경험이 곧 학습의 재료</div></div>
-            <div class="point-row"><div class="point-dot pd-edu">3</div><div class="point-text"><strong>문제 중심</strong> — 즉시 활용 가능한 지식을 원함</div></div>
-            <div class="point-row"><div class="point-dot pd-edu">4</div><div class="point-text"><strong>내적 동기</strong> — 강요보다 자발적 성장 욕구</div></div>
-            <div class="point-row"><div class="point-dot pd-edu">✓</div><div class="point-text">수업 첫 5분, <strong>"오늘 배울 내용이 현장에서 왜 중요한지"</strong> 먼저 제시</div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"교수요원은 지식을 '전달'하는 사람이 아니라, 경험 있는 성인이 스스로 깨닫도록 돕는 촉진자입니다."</div></div>
-        </div>
-      </div>
 
-      <!-- Day 2 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-edu">2<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-edu">Bloom's Taxonomy · 1956 / 개정 2001</div>
-            <h3>수업 목표를 제대로 설계하는 법 — 블룸의 교육목표 분류학</h3>
-            <div class="eng">무엇을 가르치는가</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-edu">"소방 현장지휘 이론을 이해한다"는 목표는 <strong>측정 불가능</strong>합니다. 목표가 몇 단계에 있는지 알아야 <strong>어떻게 가르치고, 어떻게 평가할지</strong>가 결정됩니다.</div>
-          <div class="bloom-stack">
-            <div class="bloom-row"><div class="bloom-lv bl1">1단계</div><div class="bloom-cnt"><div class="bloom-action">기억 (Remember)</div><div class="bloom-ex">NIMS 지휘체계 용어를 암기할 수 있다</div></div></div>
-            <div class="bloom-row"><div class="bloom-lv bl2">2단계</div><div class="bloom-cnt"><div class="bloom-action">이해 (Understand)</div><div class="bloom-ex">지휘 통일의 원칙을 자신의 말로 설명할 수 있다</div></div></div>
-            <div class="bloom-row"><div class="bloom-lv bl3">3단계</div><div class="bloom-cnt"><div class="bloom-action">적용 (Apply)</div><div class="bloom-ex">훈련 시나리오에서 지휘체계를 적용할 수 있다</div></div></div>
-            <div class="bloom-row"><div class="bloom-lv bl4">4단계</div><div class="bloom-cnt"><div class="bloom-action">분석 (Analyze)</div><div class="bloom-ex">사고 사례에서 지휘 실패 원인을 분석할 수 있다</div></div></div>
-            <div class="bloom-row"><div class="bloom-lv bl5">5단계</div><div class="bloom-cnt"><div class="bloom-action">평가 (Evaluate)</div><div class="bloom-ex">두 지휘 방식의 효과성을 근거 들어 평가할 수 있다</div></div></div>
-            <div class="bloom-row"><div class="bloom-lv bl6">6단계</div><div class="bloom-cnt"><div class="bloom-action">창조 (Create)</div><div class="bloom-ex">우리 현장에 맞는 지휘체계 매뉴얼을 설계할 수 있다</div></div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"수업 목표가 명확해야 가르칠 내용도, 평가 방법도 결정됩니다. 목표 없는 수업은 목적지 없는 출동과 같습니다."</div></div>
-        </div>
-      </div>
-
-      <!-- Day 3 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-edu">3<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-edu">Robert Gagné · Nine Events of Instruction, 1965</div>
-            <h3>수업을 설계하는 9개의 체크리스트 — 가네의 수업사태</h3>
-            <div class="eng">어떻게 가르치는가</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-edu">훌륭한 수업은 즉흥이 아니라 <strong>설계</strong>에서 나옵니다. 9가지 수업사태를 체크리스트로 쓰면, <strong>어떤 수업도 탄탄해집니다.</strong></div>
-          <div class="gagne-list">
-            <div class="gagne-row"><div class="gagne-num gn1">1</div><div class="gagne-cnt"><div class="gagne-title">주의 획득</div><div class="gagne-ex">화재 영상으로 수업 시작 — 교육생 주의를 즉각 끌어라</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn2">2</div><div class="gagne-cnt"><div class="gagne-title">학습목표 제시</div><div class="gagne-ex">오늘 끝나면 무엇을 할 수 있는지 명확히</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn3">3</div><div class="gagne-cnt"><div class="gagne-title">선수학습 회상</div><div class="gagne-ex">이전 학습과 연결 — "지난 시간 SA 기억하나요?"</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn4">4</div><div class="gagne-cnt"><div class="gagne-title">자극 자료 제시</div><div class="gagne-ex">핵심 내용 명확히 설명·사례·시범</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn5">5</div><div class="gagne-cnt"><div class="gagne-title">학습 안내 제공</div><div class="gagne-ex">힌트·비유·예시로 스스로 이해하도록 안내</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn6">6</div><div class="gagne-cnt"><div class="gagne-title">수행 유도</div><div class="gagne-ex">교육생이 직접 해보게 — 시나리오·역할극·발표</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn7">7</div><div class="gagne-cnt"><div class="gagne-title">피드백 제공</div><div class="gagne-ex">즉각적·구체적 피드백. "잘했어요"(X) → 구체적 내용(O)</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn8">8</div><div class="gagne-cnt"><div class="gagne-title">수행 평가</div><div class="gagne-ex">목표 달성 여부 확인 — 퀴즈·토의·시뮬레이션</div></div></div>
-            <div class="gagne-row"><div class="gagne-num gn9">9</div><div class="gagne-cnt"><div class="gagne-title">파지·전이 향상</div><div class="gagne-ex">"다음 출동 때 오늘 배운 기준 직접 체크해보세요"</div></div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"수업은 즉흥 퍼포먼스가 아닙니다. 9가지 사건이 설계된 작품입니다."</div></div>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- ── TAB 3: 교수법 ── -->
-  <div id="panel-tch" class="tab-panel">
-    <div class="panel-hero hero-tch" data-num="3">
-      <div class="badge">Today 3분 교수법</div>
-      <h2>수업을 살리는<br>3가지 교수 기술</h2>
-      <p>발문으로 머리를 · 시범으로 몸을 · 토의로 경험을 자극한다</p>
-    </div>
-
-    <div class="series-nav">
-      <span class="sn-item sn-active-tch">Day 1 발문법</span>
-      <span class="sn-item sn-active-tch">Day 2 시범법</span>
-      <span class="sn-item sn-active-tch">Day 3 토의법</span>
-    </div>
-
-    <div class="day-grid">
-      <!-- Day 1 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-tch">1<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-tch">Socratic Method · 소크라테스식 문답법</div>
-            <h3>교수자의 질문이 수업을 바꾼다 — 발문법</h3>
-            <div class="eng">머리를 자극한다</div>
-          </div>
-        </div>
-        <div class="day-body">
-          <div class="concept concept-tch">교육생의 <strong>사고를 자극하는 질문 하나</strong>가 10분의 강의보다 강합니다. 발문법은 <strong>의도적으로 설계된 질문</strong>으로 학습 참여와 이해를 동시에 높이는 핵심 교수 기술입니다.</div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-tch">✗</div><div class="point-text"><strong>폐쇄형(지양)</strong> "공격전략이 맞죠?" → 예/아니오로 끝, 사고 없음</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">✓</div><div class="point-text"><strong>개방형(권장)</strong> "이 상황에서 왜 공격전략을 선택했나요?" → 판단력 유도</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">1</div><div class="point-text"><strong>기억 발문</strong>으로 시작 → <strong>적용·분석 발문</strong>으로 심화 → <strong>평가·창조 발문</strong>으로 마무리</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">✓</div><div class="point-text">소방 현장지휘 수업의 최적 발문: <strong>"여러분이 그 상황이었다면?"</strong></div></div>
-          </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"좋은 교수자는 답을 가르치지 않습니다. 답을 찾게 만드는 질문을 설계합니다."</div></div>
-        </div>
+  <!-- ══ PANEL: 교육학 ══ -->
+  <div class="panel" id="panel-edu">
+    <div class="day-nav-wrap">
+      <div class="day-nav">
+        <button class="dtab da-edu on" onclick="switchDay('edu',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">가네</span></button>
+        <button class="dtab da-edu" onclick="switchDay('edu',2,this)">Day 2 <span style="opacity:.5;font-size:.7em;">블룸</span></button>
+        <button class="dtab da-edu" onclick="switchDay('edu',1,this)">Day 1 <span style="opacity:.5;font-size:.7em;">안드라고지</span></button>
       </div>
+    </div>
+    <div class="content-area">
+      <div class="inner">
 
-      <!-- Day 2 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-tch">2<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-tch">Edgar Dale's Cone of Experience · 1969</div>
-            <h3>보여주지 않으면 배우지 못한다 — 시범법</h3>
-            <div class="eng">몸을 자극한다</div>
+        <!-- EDU Day 3 -->
+        <div class="day-content on" id="edu-day-3">
+          <div class="hero h-edu" data-bg="3">
+            <div class="day-badge">DAY 3 · 최신</div>
+            <div class="badge">Today 3분 교육학</div>
+            <h2>수업을 설계하는<br>9개의 체크리스트</h2>
+            <p class="tagline">가네의 9가지 수업사태 · R. Gagné, 1965</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-edu">3<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-edu">Nine Events of Instruction · Gagné, 1965</div>
+                <h3>가네의 9가지 수업사태</h3>
+                <div class="eng">어떻게 가르치는가</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-edu">훌륭한 수업은 즉흥이 아니라 <strong>설계</strong>에서 나옵니다. 9가지를 체크리스트로 쓰면, <strong>어떤 수업도 탄탄해집니다.</strong></div>
+              <div class="gagne">
+                <div class="grow"><div class="gnum gn1">1</div><div class="gcnt"><div class="gt">주의 획득</div><div class="ge">화재 영상으로 시작 — 교육생 주의를 즉각 끌어라</div></div></div>
+                <div class="grow"><div class="gnum gn2">2</div><div class="gcnt"><div class="gt">학습목표 제시</div><div class="ge">오늘 끝나면 무엇을 할 수 있는지 명확히</div></div></div>
+                <div class="grow"><div class="gnum gn3">3</div><div class="gcnt"><div class="gt">선수학습 회상</div><div class="ge">이전 학습과 연결 — "지난 시간 SA 기억하나요?"</div></div></div>
+                <div class="grow"><div class="gnum gn4">4</div><div class="gcnt"><div class="gt">자극 자료 제시</div><div class="ge">핵심 내용 명확히 설명·사례·시범</div></div></div>
+                <div class="grow"><div class="gnum gn5">5</div><div class="gcnt"><div class="gt">학습 안내 제공</div><div class="ge">힌트·비유·예시로 스스로 이해하도록 안내</div></div></div>
+                <div class="grow"><div class="gnum gn6">6</div><div class="gcnt"><div class="gt">수행 유도</div><div class="ge">교육생이 직접 — 시나리오·역할극·발표</div></div></div>
+                <div class="grow"><div class="gnum gn7">7</div><div class="gcnt"><div class="gt">피드백 제공</div><div class="ge">즉각·구체적. "잘했어요"(✗) → 구체적 내용(✓)</div></div></div>
+                <div class="grow"><div class="gnum gn8">8</div><div class="gcnt"><div class="gt">수행 평가</div><div class="ge">목표 달성 여부 확인 — 퀴즈·토의·시뮬레이션</div></div></div>
+                <div class="grow"><div class="gnum gn9">9</div><div class="gcnt"><div class="gt">파지·전이 향상</div><div class="ge">"다음 출동 때 오늘 배운 기준 직접 체크해보세요"</div></div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"수업은 즉흥 퍼포먼스가 아닙니다. 9가지 사건이 설계된 작품입니다."</div></div>
+            </div>
           </div>
         </div>
-        <div class="day-body">
-          <div class="concept concept-tch">Dale의 경험의 원추 이론: 읽은 것 10%, 들은 것 20%, <strong>직접 체험·행동한 것은 90%를 기억</strong>합니다. 소방 현장지휘 교육에 가장 강력한 방법입니다.</div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-tch">1</div><div class="point-text"><strong>설명</strong> — 교수자가 전체 과정을 먼저 안내</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">2</div><div class="point-text"><strong>시범</strong> — 교수자가 속도 조절하며 핵심 동작 강조해 정확하게 시연</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">3</div><div class="point-text"><strong>모방</strong> — 교육생 1~2명이 시도, 즉각적이고 구체적인 피드백</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">4</div><div class="point-text"><strong>반복</strong> — 전원이 올바른 절차가 자동화될 때까지 반복 연습</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">✓</div><div class="point-text">잘못된 시범도 보여주세요. <strong>비교 학습</strong>이 올바른 절차를 더 강하게 각인</div></div>
+
+        <!-- EDU Day 2 -->
+        <div class="day-content" id="edu-day-2">
+          <div class="hero h-edu" data-bg="2">
+            <div class="day-badge">DAY 2</div>
+            <div class="badge">Today 3분 교육학</div>
+            <h2>수업 목표를 제대로<br>설계하는 법</h2>
+            <p class="tagline">블룸의 교육목표 분류학 · Bloom, 1956 / 개정 2001</p>
           </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"교수자가 먼저 완벽하게 보여줄 수 없다면, 교육생은 무엇을 따라 해야 할지 모릅니다."</div></div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-edu">2<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-edu">Bloom's Taxonomy · 개정판 2001</div>
+                <h3>블룸의 교육목표 분류학</h3>
+                <div class="eng">무엇을 가르치는가</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-edu">"소방 현장지휘 이론을 이해한다"는 목표는 <strong>측정 불가능</strong>합니다. 목표가 몇 단계에 있는지 알아야 <strong>어떻게 가르치고, 어떻게 평가할지</strong>가 결정됩니다.</div>
+              <div class="bloom">
+                <div class="blrow"><div class="bllv bl1">1단계</div><div class="blc"><div class="bla">기억 (Remember)</div><div class="ble">NIMS 지휘체계 용어를 암기할 수 있다</div></div></div>
+                <div class="blrow"><div class="bllv bl2">2단계</div><div class="blc"><div class="bla">이해 (Understand)</div><div class="ble">지휘 통일 원칙을 자신의 말로 설명할 수 있다</div></div></div>
+                <div class="blrow"><div class="bllv bl3">3단계</div><div class="blc"><div class="bla">적용 (Apply)</div><div class="ble">훈련 시나리오에서 지휘체계를 적용할 수 있다</div></div></div>
+                <div class="blrow"><div class="bllv bl4">4단계</div><div class="blc"><div class="bla">분석 (Analyze)</div><div class="ble">사고 사례에서 지휘 실패 원인을 분석할 수 있다</div></div></div>
+                <div class="blrow"><div class="bllv bl5">5단계</div><div class="blc"><div class="bla">평가 (Evaluate)</div><div class="ble">두 지휘 방식의 효과성을 근거 들어 평가할 수 있다</div></div></div>
+                <div class="blrow"><div class="bllv bl6">6단계</div><div class="blc"><div class="bla">창조 (Create)</div><div class="ble">우리 현장에 맞는 지휘체계 매뉴얼을 설계할 수 있다</div></div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"목표 없는 수업은 목적지 없는 출동과 같습니다."</div></div>
+            </div>
+          </div>
         </div>
+
+        <!-- EDU Day 1 -->
+        <div class="day-content" id="edu-day-1">
+          <div class="hero h-edu" data-bg="1">
+            <div class="day-badge">DAY 1</div>
+            <div class="badge">Today 3분 교육학</div>
+            <h2>성인학습자를 어떻게<br>가르칠 것인가</h2>
+            <p class="tagline">안드라고지 (Andragogy) · Malcolm Knowles, 1970</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-edu">1<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-edu">Andragogy · Malcolm Knowles, 1970</div>
+                <h3>안드라고지 — 성인학습 이론</h3>
+                <div class="eng">누구에게 가르치는가</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-edu">소방공무원 교육생은 <strong>이미 풍부한 현장경험을 가진 성인학습자</strong>입니다. 성인은 <strong>"왜 배우는가"</strong>가 명확할 때 학습 몰입도가 극대화됩니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-edu">1</div><div class="ptext"><strong>자기주도성</strong> — 스스로 학습을 통제하고 싶어함</div></div>
+                <div class="pt"><div class="pdot pd-edu">2</div><div class="ptext"><strong>경험 자원</strong> — 현장경험이 곧 학습의 재료</div></div>
+                <div class="pt"><div class="pdot pd-edu">3</div><div class="ptext"><strong>문제 중심</strong> — 즉시 활용 가능한 지식을 원함</div></div>
+                <div class="pt"><div class="pdot pd-edu">4</div><div class="ptext"><strong>내적 동기</strong> — 강요보다 자발적 성장 욕구</div></div>
+                <div class="pt"><div class="pdot pd-edu">✓</div><div class="ptext">수업 첫 5분 — <strong>"오늘 내용이 현장에서 왜 중요한지"</strong> 먼저 제시</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"교수요원은 지식을 '전달'하는 사람이 아니라, 경험 있는 성인이 스스로 깨닫도록 돕는 촉진자입니다."</div></div>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </div>
 
-      <!-- Day 3 -->
-      <div class="day-card">
-        <div class="day-header">
-          <div class="day-num dn-tch">3<div class="day-label">DAY</div></div>
-          <div class="day-title-block">
-            <div class="theory theory-tch">Cooperative Learning · Johnson & Johnson, 1994</div>
-            <h3>교육생이 말하는 수업이 최고의 수업이다 — 토의법</h3>
-            <div class="eng">경험을 자극한다</div>
+  <!-- ══ PANEL: 교수법 ══ -->
+  <div class="panel" id="panel-tch">
+    <div class="day-nav-wrap">
+      <div class="day-nav">
+        <button class="dtab da-tch on" onclick="switchDay('tch',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">토의법</span></button>
+        <button class="dtab da-tch" onclick="switchDay('tch',2,this)">Day 2 <span style="opacity:.5;font-size:.7em;">시범법</span></button>
+        <button class="dtab da-tch" onclick="switchDay('tch',1,this)">Day 1 <span style="opacity:.5;font-size:.7em;">발문법</span></button>
+      </div>
+    </div>
+    <div class="content-area">
+      <div class="inner">
+
+        <!-- TCH Day 3 -->
+        <div class="day-content on" id="tch-day-3">
+          <div class="hero h-tch" data-bg="3">
+            <div class="day-badge">DAY 3 · 최신</div>
+            <div class="badge">Today 3분 교수법</div>
+            <h2>교육생이 말하는 수업이<br>최고의 수업이다</h2>
+            <p class="tagline">토의법 (Discussion Method) · Johnson & Johnson, 1994</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-tch">3<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-tch">Cooperative Learning · Johnson & Johnson, 1994</div>
+                <h3>토의법 — 경험을 자극한다</h3>
+                <div class="eng">집단 지성으로 문제를 해결하는 교수 방법</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-tch">소방위~소방령은 모두 현장 경험자입니다. 그 경험이 교실 안에서 <strong>최고의 교재</strong>가 됩니다. 토의법은 집단 지성으로 문제를 해결하는 방법입니다.</div>
+              <div class="chips">
+                <div class="chip"><div class="ch-badge bg">소규모</div><div class="ch-name">버즈 토의</div><div class="ch-desc">3~6명 소그룹, 5~10분 짧게. 전체 발표로 마무리</div></div>
+                <div class="chip"><div class="ch-badge ba">사례 기반</div><div class="ch-name">사례 토의</div><div class="ch-desc">실제 화재 사례로 지휘 결정 옳고 그름 분석</div></div>
+                <div class="chip"><div class="ch-badge bp">역할 분담</div><div class="ch-name">패널 토의</div><div class="ch-desc">경험 많은 교육생을 패널로 세워 암묵지 공유</div></div>
+              </div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-tch">1</div><div class="ptext">교수자는 말을 줄이고 <strong>교통정리만</strong> 하세요</div></div>
+                <div class="pt"><div class="pdot pd-tch">2</div><div class="ptext">틀린 의견도 바로 수정하지 말고 <strong>"다른 분 의견은요?"</strong>로 전환</div></div>
+                <div class="pt"><div class="pdot pd-tch">3</div><div class="ptext">토의 후 반드시 <strong>교수자 정리</strong>로 핵심 개념 수렴</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"교실 안 소방관들의 경험 합계는 어떤 교재보다 풍부합니다. 그 경험이 흐르게 하는 것이 토의법입니다."</div></div>
+            </div>
           </div>
         </div>
-        <div class="day-body">
-          <div class="concept concept-tch">소방위~소방령은 모두 현장 경험자입니다. 그 경험이 교실 안에서 <strong>최고의 교재</strong>가 됩니다. 토의법은 집단 지성으로 문제를 해결하는 교수 방법입니다.</div>
-          <div class="type-chips">
-            <div class="type-chip"><div class="tc-badge b-g">소규모</div><div class="tc-name">버즈 토의</div><div class="tc-desc">3~6명 소그룹, 5~10분 짧게. 전체 발표로 마무리</div></div>
-            <div class="type-chip"><div class="tc-badge b-a">사례 기반</div><div class="tc-name">사례 토의</div><div class="tc-desc">실제 화재 사례로 지휘 결정 옳고 그름 분석</div></div>
-            <div class="type-chip"><div class="tc-badge b-p">역할 분담</div><div class="tc-name">패널 토의</div><div class="tc-desc">경험 많은 교육생을 패널로 세워 암묵지 공유</div></div>
+
+        <!-- TCH Day 2 -->
+        <div class="day-content" id="tch-day-2">
+          <div class="hero h-tch" data-bg="2">
+            <div class="day-badge">DAY 2</div>
+            <div class="badge">Today 3분 교수법</div>
+            <h2>보여주지 않으면<br>배우지 못한다</h2>
+            <p class="tagline">시범법 (Demonstration) · Edgar Dale, 1969</p>
           </div>
-          <div class="points">
-            <div class="point-row"><div class="point-dot pd-tch">1</div><div class="point-text">교수자는 말을 줄이고 <strong>교통정리만</strong> 하세요</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">2</div><div class="point-text">틀린 의견도 바로 수정하지 말고 <strong>"다른 분 의견은요?"</strong>로 전환</div></div>
-            <div class="point-row"><div class="point-dot pd-tch">3</div><div class="point-text">토의 후 반드시 <strong>교수자 정리</strong>로 핵심 개념 수렴</div></div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-tch">2<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-tch">Cone of Experience · Edgar Dale, 1969</div>
+                <h3>시범법 — 몸을 자극한다</h3>
+                <div class="eng">직접 체험·행동 → 기억률 90%</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-tch">Dale의 경험의 원추: 읽은 것 10%, 들은 것 20%, <strong>직접 체험·행동한 것은 90%를 기억</strong>합니다. 소방 교육에 가장 강력한 방법입니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-tch">1</div><div class="ptext"><strong>설명</strong> — 교수자가 전체 과정을 먼저 안내</div></div>
+                <div class="pt"><div class="pdot pd-tch">2</div><div class="ptext"><strong>시범</strong> — 속도 조절하며 핵심 동작 강조해 정확하게 시연</div></div>
+                <div class="pt"><div class="pdot pd-tch">3</div><div class="ptext"><strong>모방</strong> — 교육생 1~2명이 시도, 즉각·구체적 피드백</div></div>
+                <div class="pt"><div class="pdot pd-tch">4</div><div class="ptext"><strong>반복</strong> — 전원이 올바른 절차가 자동화될 때까지</div></div>
+                <div class="pt"><div class="pdot pd-tch">✓</div><div class="ptext">잘못된 시범도 보여주세요 — <strong>비교 학습</strong>이 더 강하게 각인</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"교수자가 먼저 완벽하게 보여줄 수 없다면, 교육생은 무엇을 따라 해야 할지 모릅니다."</div></div>
+            </div>
           </div>
-          <div class="takeaway"><div class="tk-label">한 줄 교훈</div><div class="tk-text">"교실 안에 있는 소방관들의 경험 합계는 어떤 교재보다 풍부합니다. 그 경험이 흐르게 하는 것이 토의법입니다."</div></div>
+        </div>
+
+        <!-- TCH Day 1 -->
+        <div class="day-content" id="tch-day-1">
+          <div class="hero h-tch" data-bg="1">
+            <div class="day-badge">DAY 1</div>
+            <div class="badge">Today 3분 교수법</div>
+            <h2>교수자의 질문이<br>수업을 바꾼다</h2>
+            <p class="tagline">발문법 (Questioning) · 소크라테스식 문답법</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-tch">1<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-tch">Socratic Method · 소크라테스식 문답법</div>
+                <h3>발문법 — 머리를 자극한다</h3>
+                <div class="eng">의도적으로 설계된 질문으로 사고를 이끈다</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-tch">교육생의 <strong>사고를 자극하는 질문 하나</strong>가 10분의 강의보다 강합니다. 발문법은 의도적으로 설계된 질문으로 학습 참여와 이해를 동시에 높이는 핵심 교수 기술입니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-tch">✗</div><div class="ptext"><strong>폐쇄형(지양)</strong> "공격전략이 맞죠?" → 예/아니오로 끝, 사고 없음</div></div>
+                <div class="pt"><div class="pdot pd-tch">✓</div><div class="ptext"><strong>개방형(권장)</strong> "이 상황에서 왜 공격전략을 선택했나요?" → 판단력 유도</div></div>
+                <div class="pt"><div class="pdot pd-tch">1</div><div class="ptext"><strong>기억 발문</strong>으로 시작 — "지난 시간 SA 3단계는?"</div></div>
+                <div class="pt"><div class="pdot pd-tch">2</div><div class="ptext"><strong>적용·분석 발문</strong>으로 심화 — "이 사례에서 SA 어느 단계를 놓쳤나요?"</div></div>
+                <div class="pt"><div class="pdot pd-tch">3</div><div class="ptext"><strong>평가·창조 발문</strong>으로 마무리 — "여러분이라면 어떻게 했을까요?"</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"좋은 교수자는 답을 가르치지 않습니다. 답을 찾게 만드는 질문을 설계합니다."</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PANEL: 방명록 ══ -->
+  <div class="panel" id="panel-gbk">
+    <div class="gbk-wrap">
+      <div class="gbk-inner">
+        <div class="gbk-hero">
+          <div class="badge">Guestbook</div>
+          <h2>방명록</h2>
+          <p>인천소방학교 ICTC · Today Best를 방문해주신 분들의 이야기</p>
+        </div>
+
+        <!-- FORM -->
+        <div class="form-card">
+          <div class="form-title">방명록 작성</div>
+          <div class="form-row">
+            <label class="form-label" for="gbk-name">이름 (소속)</label>
+            <input class="form-input" id="gbk-name" type="text" placeholder="예) 홍길동 (인천소방서)" maxlength="30">
+          </div>
+          <div class="form-row">
+            <label class="form-label" for="gbk-msg">내용</label>
+            <textarea class="form-input form-textarea" id="gbk-msg" placeholder="Today Best를 보신 소감, 응원의 한마디를 남겨주세요 :)" maxlength="300"></textarea>
+          </div>
+          <button class="form-submit" onclick="submitEntry()">방명록 남기기</button>
+        </div>
+
+        <!-- ENTRIES -->
+        <div class="entries-title">
+          방명록 <span class="entry-count" id="entry-count">0건</span>
+        </div>
+        <div class="entry-list" id="entry-list">
+          <div class="empty-state">
+            <div class="empty-icon">✍️</div>
+            <div class="empty-text">아직 방명록이 없습니다.<br>첫 번째 메시지를 남겨보세요!</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <footer class="app-footer">
-    인천소방학교 지휘역량강화센터(ICTC) · 권유진 · v.26.4.1<br>
-    Today Best — 현장지휘관 × 교육학 × 교수법
+    인천소방학교 지휘역량강화센터(ICTC) · 권유진 · v.26.4.1
   </footer>
 </div>
 
 <button class="back-btn" id="backBtn" onclick="goBack()">↩ 처음으로</button>
 
 <script>
-function enterApp() {
-  const landing = document.getElementById('landing');
-  const app = document.getElementById('app');
-  const backBtn = document.getElementById('backBtn');
-  landing.classList.add('hidden');
-  setTimeout(() => {
-    landing.style.display = 'none';
-    app.classList.add('visible');
-    backBtn.classList.add('show');
-  }, 650);
+// ── STATE ──
+let entries = [];
+try { entries = JSON.parse(localStorage.getItem('ictc_gbk') || '[]'); } catch(e){}
+
+// ── LANDING ──
+function enterApp(){
+  const l=document.getElementById('landing'),a=document.getElementById('app'),b=document.getElementById('backBtn');
+  l.classList.add('out');
+  setTimeout(()=>{ l.style.display='none'; a.classList.add('on'); b.classList.add('show'); renderEntries(); },620);
+}
+function goBack(){
+  const l=document.getElementById('landing'),a=document.getElementById('app'),b=document.getElementById('backBtn');
+  a.classList.remove('on'); a.style.display='none';
+  b.classList.remove('show');
+  l.style.display='flex'; l.classList.remove('out');
 }
 
-function goBack() {
-  const landing = document.getElementById('landing');
-  const app = document.getElementById('app');
-  const backBtn = document.getElementById('backBtn');
-  app.style.display = 'none';
-  backBtn.classList.remove('show');
-  landing.style.display = 'flex';
-  landing.classList.remove('hidden');
+// ── MAIN TABS ──
+function switchMain(tab, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.mtab').forEach(b=>b.classList.remove('a-cmd','a-edu','a-tch','a-gbk'));
+  document.getElementById('panel-'+tab).classList.add('on');
+  btn.classList.add('a-'+tab);
+  // scroll content to top
+  const ca=document.querySelector('#panel-'+tab+' .content-area, #panel-'+tab+' .gbk-wrap');
+  if(ca) ca.scrollTop=0;
 }
 
-function switchTab(tab, btn) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => {
-    b.classList.remove('active-cmd','active-edu','active-tch');
-  });
-  document.getElementById('panel-' + tab).classList.add('active');
-  btn.classList.add('active-' + tab);
+// ── DAY TABS ──
+function switchDay(prefix, day, btn){
+  const panel=document.getElementById('panel-'+prefix);
+  panel.querySelectorAll('.day-content').forEach(d=>d.classList.remove('on'));
+  panel.querySelectorAll('.dtab').forEach(b=>b.classList.remove('on'));
+  document.getElementById(prefix+'-day-'+day).classList.add('on');
+  btn.classList.add('on');
+  const ca=panel.querySelector('.content-area');
+  if(ca) ca.scrollTop=0;
 }
+
+// ── GUESTBOOK ──
+function submitEntry(){
+  const name=document.getElementById('gbk-name').value.trim();
+  const msg=document.getElementById('gbk-msg').value.trim();
+  if(!name){ alert('이름을 입력해주세요.'); document.getElementById('gbk-name').focus(); return; }
+  if(!msg){ alert('내용을 입력해주세요.'); document.getElementById('gbk-msg').focus(); return; }
+  const entry={ id: Date.now(), name, msg, date: new Date().toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) };
+  entries.unshift(entry);
+  try{ localStorage.setItem('ictc_gbk', JSON.stringify(entries)); }catch(e){}
+  document.getElementById('gbk-name').value='';
+  document.getElementById('gbk-msg').value='';
+  renderEntries();
+}
+
+function deleteEntry(id){
+  if(!confirm('삭제하시겠습니까?')) return;
+  entries=entries.filter(e=>e.id!==id);
+  try{ localStorage.setItem('ictc_gbk', JSON.stringify(entries)); }catch(e){}
+  renderEntries();
+}
+
+function getInitial(name){ return name ? name.charAt(0) : '?'; }
+
+function renderEntries(){
+  const list=document.getElementById('entry-list');
+  const count=document.getElementById('entry-count');
+  count.textContent=entries.length+'건';
+  if(!entries.length){
+    list.innerHTML='<div class="empty-state"><div class="empty-icon">✍️</div><div class="empty-text">아직 방명록이 없습니다.<br>첫 번째 메시지를 남겨보세요!</div></div>';
+    return;
+  }
+  list.innerHTML=entries.map(e=>`
+    <div class="entry-item">
+      <div class="entry-header">
+        <div class="entry-name-wrap">
+          <div class="entry-avatar">${getInitial(e.name)}</div>
+          <div class="entry-name">${escHtml(e.name)}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="entry-date">${e.date}</div>
+          <button class="entry-del" onclick="deleteEntry(${e.id})" title="삭제">✕</button>
+        </div>
+      </div>
+      <div class="entry-content">${escHtml(e.msg).replace(/\n/g,'<br>')}</div>
+    </div>
+  `).join('');
+}
+
+function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 </script>
 </body>
 </html>
