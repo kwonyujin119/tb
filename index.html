@@ -201,6 +201,26 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
 .empty-icon{font-size:2.5rem;margin-bottom:12px;opacity:.5;}
 .empty-text{font-size:.83rem;font-weight:500;color:#bbb;}
 
+
+/* ── BACKUP / RESTORE ── */
+.gbk-backup-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.bbtn{flex:1;min-width:120px;padding:10px 14px;border-radius:8px;font-family:'Noto Sans KR',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;border:1.5px solid;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .18s;}
+.bbtn-export{background:#fff;border-color:var(--gbk);color:var(--gbk);}
+.bbtn-export:hover{background:var(--gbk-l);}
+.bbtn-import{background:var(--gbk);border-color:var(--gbk);color:#fff;}
+.bbtn-import:hover{background:var(--gbk-d);}
+.bbtn-clear{background:#fff;border-color:#E24B4A;color:#E24B4A;}
+.bbtn-clear:hover{background:#FCEBEB;}
+.backup-notice{font-size:.72rem;color:var(--g600);background:var(--gbk-l);border:1px solid #C4A8F7;border-radius:8px;padding:9px 13px;margin-bottom:14px;line-height:1.6;}
+.backup-notice strong{color:var(--gbk-d);}
+.restore-area{display:none;margin-bottom:14px;}
+.restore-area textarea{width:100%;height:90px;padding:10px 12px;border:1.5px solid var(--gbk);border-radius:8px;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;color:var(--g900);resize:vertical;outline:none;}
+.restore-row{display:flex;gap:8px;margin-top:8px;}
+.rbtn{flex:1;padding:9px;border-radius:8px;font-family:'Noto Sans KR',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;border:1.5px solid;transition:all .15s;}
+.rbtn-ok{background:var(--gbk);color:#fff;border-color:var(--gbk);}
+.rbtn-ok:hover{background:var(--gbk-d);}
+.rbtn-cancel{background:#fff;color:var(--g700);border-color:var(--g300);}
+.rbtn-cancel:hover{background:var(--g100);}
 /* ── BACK BTN ── */
 .back-btn{position:fixed;bottom:20px;right:16px;background:var(--g900);color:#fff;border:none;border-radius:100px;padding:10px 18px;font-size:.76rem;font-family:'Noto Sans KR',sans-serif;font-weight:500;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);display:none;z-index:200;align-items:center;gap:6px;transition:background .2s;}
 .back-btn.show{display:flex;}
@@ -261,7 +281,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
   <div class="panel on" id="panel-cmd">
     <div class="day-nav-wrap">
       <div class="day-nav">
-        <button class="dtab da-cmd on" onclick="switchDay('cmd',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">검토회의</span></button>
+        <button class="dtab da-cmd on" onclick="switchDay('cmd',7,this)">Day 7 <span style="opacity:.5;font-size:.7em;">ICS</span></button>
+        <button class="dtab da-cmd" onclick="switchDay('cmd',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">검토회의</span></button>
         <button class="dtab da-cmd" onclick="switchDay('cmd',5,this)">Day 5 <span style="opacity:.5;font-size:.7em;">THINCS</span></button>
         <button class="dtab da-cmd" onclick="switchDay('cmd',4,this)">Day 4 <span style="opacity:.5;font-size:.7em;">리더십</span></button>
         <button class="dtab da-cmd" onclick="switchDay('cmd',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">SMEAC</span></button>
@@ -275,8 +296,44 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
 
 
 
+
+        <!-- CMD Day 7 -->
+        <div class="day-content on" id="cmd-day-7">
+          <div class="hero h-cmd" data-bg="7">
+            <div class="day-badge">DAY 7 · 최신</div>
+            <div class="badge">Today 3분 현장지휘관</div>
+            <h2>대형재난엔 혼자 지휘할 수 없다<br>— 긴급구조통제단(ICS)</h2>
+            <p class="tagline">Incident Command System · 재난 및 안전관리 기본법 기반</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-cmd">7<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-cmd">긴급구조통제단 · 재난안전법 제49·50조</div>
+                <h3>현장지휘체계(ICS)와 긴급구조통제단 운영</h3>
+                <div class="eng">모든 작전을 표준화하고 자원을 효율적으로 배분하는 체계</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-cmd">대규모 재난에서 현장지휘관 혼자서는 모든 것을 통제할 수 없습니다. <strong>ICS(현장지휘체계)</strong>는 재난의 유형과 크기에 관계없이 현장 작전을 조직화하고 자원을 체계적으로 배분하는 표준화된 지휘 시스템입니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-cmd">1</div><div class="ptext"><strong>3단계 지휘체계</strong> — 소방청(중앙통제단) → 소방본부(시·도통제단) → 소방서(시·군·구통제단)<br><span style="font-size:.73rem;color:#888;">일상적 재난: 소방서장이 통제단장 / 대규모 확대 시 상위 통제단 가동</span></div></div>
+                <div class="pt"><div class="pdot pd-cmd">2</div><div class="ptext"><strong>부분통제단 vs 완전통제단</strong> — 상황에 따라 탄력적 운영<br><span style="font-size:.73rem;color:#888;">대응1단계: 부분통제단(6명 이상) / 대응2·3단계: 완전통제단 가동</span></div></div>
+                <div class="pt"><div class="pdot pd-cmd">3</div><div class="ptext"><strong>통합지휘팀(UC)</strong> — 유관기관(경찰·의료·자치단체) 연락관이 함께 지휘 참여<br><span style="font-size:.73rem;color:#888;">유관기관에게 임무 요청: 경찰(교통통제·입건) / 전력(단전) / 도시가스(차단)</span></div></div>
+                <div class="pt"><div class="pdot pd-cmd">4</div><div class="ptext"><strong>통솔범위 원칙</strong> — 지휘관 1명이 직접 관리하는 하위조직은 3~7개가 한계<br><span style="font-size:.73rem;color:#888;">초과 시 반장 임명 → 분대장들을 반장이 통제하는 계층 추가</span></div></div>
+                <div class="pt"><div class="pdot pd-cmd">5</div><div class="ptext"><strong>자원집결지 vs 자원대기소</strong> 구분 운영<br><span style="font-size:.73rem;color:#888;">자원집결지: 현장 외부 집결 / 자원대기소(대기2단계): 현장 인근, 30분 이상 지속 시</span></div></div>
+              </div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-cmd">✓</div><div class="ptext"><strong>ICS 5대 원칙</strong>: 지휘통일 · 통솔범위 · 임무관리 · 통합통신 · 통합지휘소</div></div>
+                <div class="pt"><div class="pdot pd-cmd">✓</div><div class="ptext">Day 1~7 연결: SA(1)+NDM(2)+SMEAC(3)+리더십(4)+THINCS(5)+검토회의(6)+<strong>ICS(7)</strong> = 완전한 지휘 역량 사이클</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"규모가 커질수록 지휘체계가 더 중요합니다. ICS는 혼돈을 질서로 바꾸는 지휘관의 언어입니다."</div></div>
+            </div>
+          </div>
+        </div>
+
         <!-- CMD Day 6 -->
-        <div class="day-content on" id="cmd-day-6">
+        <div class="day-content" id="cmd-day-6">
           <div class="hero h-cmd" data-bg="6">
             <div class="day-badge">DAY 6 · 최신</div>
             <div class="badge">Today 3분 현장지휘관</div>
@@ -487,7 +544,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
   <div class="panel" id="panel-edu">
     <div class="day-nav-wrap">
       <div class="day-nav">
-        <button class="dtab da-edu on" onclick="switchDay('edu',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">콜브</span></button>
+        <button class="dtab da-edu on" onclick="switchDay('edu',7,this)">Day 7 <span style="opacity:.5;font-size:.7em;">비고츠키</span></button>
+        <button class="dtab da-edu" onclick="switchDay('edu',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">콜브</span></button>
         <button class="dtab da-edu" onclick="switchDay('edu',5,this)">Day 5 <span style="opacity:.5;font-size:.7em;">커크패트릭</span></button>
         <button class="dtab da-edu" onclick="switchDay('edu',4,this)">Day 4 <span style="opacity:.5;font-size:.7em;">메릴</span></button>
         <button class="dtab da-edu" onclick="switchDay('edu',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">가네</span></button>
@@ -501,8 +559,44 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
 
 
 
+
+        <!-- EDU Day 7 -->
+        <div class="day-content on" id="edu-day-7">
+          <div class="hero h-edu" data-bg="7">
+            <div class="day-badge">DAY 7 · 최신</div>
+            <div class="badge">Today 3분 교육학</div>
+            <h2>혼자보다 함께 배울 때<br>더 멀리 갈 수 있다</h2>
+            <p class="tagline">비고츠키의 구성주의 — 근접발달영역(ZPD) · Vygotsky, 1978</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-edu">7<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-edu">Zone of Proximal Development · Vygotsky, 1978</div>
+                <h3>비고츠키의 근접발달영역(ZPD)과 비계 설정</h3>
+                <div class="eng">교수자가 왜 필요한지를 설명하는 가장 강력한 이론</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-edu">학습자는 혼자 할 수 있는 영역(현재 수준)과 도움을 받으면 할 수 있는 영역(ZPD) 사이에 있습니다. <strong>교수자의 역할은 바로 그 ZPD 안으로 들어가 학습자를 한 단계 끌어올리는 것</strong>입니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-edu">1</div><div class="ptext"><strong>현재 수준 (Actual Level)</strong> — 교육생이 혼자 독립적으로 할 수 있는 것<br><span style="font-size:.73rem;color:#888;">예: "SA 3단계를 말할 수 있다" — 이미 배운 것, 교수자 개입 불필요</span></div></div>
+                <div class="pt"><div class="pdot pd-edu">2</div><div class="ptext"><strong>근접발달영역 ZPD (Zone of Proximal Development)</strong> — 도움 있으면 할 수 있는 영역<br><span style="font-size:.73rem;color:#888;">예: "복합화재 시나리오에서 SA를 적용해 전략을 결정한다" — 교수자 개입 시 가능</span></div></div>
+                <div class="pt"><div class="pdot pd-edu">3</div><div class="ptext"><strong>비계 설정 (Scaffolding)</strong> — 교수자가 ZPD 내에서 제공하는 지원<br><span style="font-size:.73rem;color:#888;">힌트·질문·시범·체크리스트로 지원 → 교육생이 스스로 해낼 때까지 → 점진적 지원 제거</span></div></div>
+                <div class="pt"><div class="pdot pd-edu">4</div><div class="ptext"><strong>내면화 (Internalization)</strong> — ZPD 안의 것이 혼자 할 수 있는 수준으로 전환<br><span style="font-size:.73rem;color:#888;">오늘의 비계가 내일의 독립적 수행이 된다</span></div></div>
+              </div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-edu">✓</div><div class="ptext"><strong>소방 수업 적용</strong>: 교육생 현재 수준 진단 → ZPD 파악 → 적절한 난이도의 시나리오 제공 → 비계(힌트·발문) → 점진적 독립 수행</div></div>
+                <div class="pt"><div class="pdot pd-edu">✓</div><div class="ptext">너무 쉬운 수업(현재 수준 이하)도, 너무 어려운 수업(ZPD 초과)도 학습이 일어나지 않는다 → <strong>ZPD 안에 수업을 설계하라</strong></div></div>
+                <div class="pt"><div class="pdot pd-edu">✓</div><div class="ptext">Day 1~7 완성: 안드라고지+블룸+가네+메릴+커크패트릭+콜브+<strong>비고츠키</strong> = 교수역량의 완전한 체계</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"교수자는 교육생이 혼자 갈 수 없는 곳까지 함께 걸어가 주는 사람입니다. 그것이 ZPD입니다."</div></div>
+            </div>
+          </div>
+        </div>
+
         <!-- EDU Day 6 -->
-        <div class="day-content on" id="edu-day-6">
+        <div class="day-content" id="edu-day-6">
           <div class="hero h-edu" data-bg="6">
             <div class="day-badge">DAY 6 · 최신</div>
             <div class="badge">Today 3분 교육학</div>
@@ -710,7 +804,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
   <div class="panel" id="panel-tch">
     <div class="day-nav-wrap">
       <div class="day-nav">
-        <button class="dtab da-tch on" onclick="switchDay('tch',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">피드백기술</span></button>
+        <button class="dtab da-tch on" onclick="switchDay('tch',7,this)">Day 7 <span style="opacity:.5;font-size:.7em;">팀기반학습</span></button>
+        <button class="dtab da-tch" onclick="switchDay('tch',6,this)">Day 6 <span style="opacity:.5;font-size:.7em;">피드백기술</span></button>
         <button class="dtab da-tch" onclick="switchDay('tch',5,this)">Day 5 <span style="opacity:.5;font-size:.7em;">플립러닝</span></button>
         <button class="dtab da-tch" onclick="switchDay('tch',4,this)">Day 4 <span style="opacity:.5;font-size:.7em;">SBL</span></button>
         <button class="dtab da-tch" onclick="switchDay('tch',3,this)">Day 3 <span style="opacity:.5;font-size:.7em;">토의법</span></button>
@@ -724,8 +819,44 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
 
 
 
+
+        <!-- TCH Day 7 -->
+        <div class="day-content on" id="tch-day-7">
+          <div class="hero h-tch" data-bg="7">
+            <div class="day-badge">DAY 7 · 최신</div>
+            <div class="badge">Today 3분 교수법</div>
+            <h2>팀이 함께 배울 때<br>개인보다 강해진다</h2>
+            <p class="tagline">팀 기반 학습 (Team-Based Learning · TBL) · Michaelsen, 2002</p>
+          </div>
+          <div class="card">
+            <div class="card-top">
+              <div class="card-accent ac-tch">7<div class="ca-lbl">DAY</div></div>
+              <div class="card-info">
+                <div class="card-theory th-tch">Team-Based Learning · Larry Michaelsen, 2002</div>
+                <h3>팀 기반 학습(TBL) — 팀을 자극한다</h3>
+                <div class="eng">소방 현장지휘 교육에 가장 잘 맞는 협동 교수법의 완성형</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="concept cc-tch">TBL은 단순한 그룹 활동이 아닙니다. <strong>사전 학습 → 개인 시험 → 팀 시험 → 팀 적용 과제</strong>의 구조화된 4단계로 이루어진 강력한 교수법입니다. 소방 현장지휘처럼 <strong>팀이 함께 판단하는 역량</strong>이 필요한 분야에 최적화되어 있습니다.</div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-tch">1</div><div class="ptext"><strong>사전 학습 (Pre-Class Preparation)</strong> — 수업 전 Today 3분 카드로 핵심 개념 학습<br><span style="font-size:.73rem;color:#888;">플립러닝(Day 5)과 완벽히 연동 — Today 3분 카드가 TBL 사전 학습 자료가 된다</span></div></div>
+                <div class="pt"><div class="pdot pd-tch">2</div><div class="ptext"><strong>개인 준비도 확인(iRAT)</strong> — 개인이 먼저 핵심 개념 퀴즈에 답한다<br><span style="font-size:.73rem;color:#888;">예: "SA 3단계 중 현장 도착 후 가장 먼저 해야 하는 것은?" 4지선다, 2분</span></div></div>
+                <div class="pt"><div class="pdot pd-tch">3</div><div class="ptext"><strong>팀 준비도 확인(tRAT)</strong> — 동일 문제를 팀이 함께 토론하며 답한다<br><span style="font-size:.73rem;color:#888;">팀원 간 의견 충돌 → 논거 제시 → 합의 → 더 깊은 이해 형성</span></div></div>
+                <div class="pt"><div class="pdot pd-tch">4</div><div class="ptext"><strong>팀 적용 과제 (Application Activity)</strong> — 실제 현장 시나리오에 팀이 함께 적용<br><span style="font-size:.73rem;color:#888;">예: "이 화재 시나리오에서 팀의 전략 선택과 SMEAC 명령을 작성하시오"</span></div></div>
+              </div>
+              <div class="pts">
+                <div class="pt"><div class="pdot pd-tch">✓</div><div class="ptext"><strong>TBL 팀 구성 원칙</strong>: 4~6명 / 직급 혼합 구성 / 시험 내내 동일 팀 유지 → 팀 응집력이 학습 효과를 결정</div></div>
+                <div class="pt"><div class="pdot pd-tch">✓</div><div class="ptext"><strong>교수자의 역할</strong>: 강의 최소화 → 팀 간 결과 비교 촉진 → "A팀과 B팀의 전략이 다른 이유는?" 발문</div></div>
+                <div class="pt"><div class="pdot pd-tch">✓</div><div class="ptext">Day 1~7 교수법 완성: 발문·시범·토의·SBL·플립러닝·피드백+<strong>TBL</strong> = 소방 교수 역량의 최강 조합</div></div>
+              </div>
+              <div class="tw"><div class="tw-lbl">오늘의 한 줄 교훈</div><div class="tw-text">"소방은 팀으로 현장에 나갑니다. 팀으로 배워야 팀으로 강해집니다. TBL이 그 답입니다."</div></div>
+            </div>
+          </div>
+        </div>
+
         <!-- TCH Day 6 -->
-        <div class="day-content on" id="tch-day-6">
+        <div class="day-content" id="tch-day-6">
           <div class="hero h-tch" data-bg="6">
             <div class="day-badge">DAY 6 · 최신</div>
             <div class="badge">Today 3분 교수법</div>
@@ -938,6 +1069,28 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
         </div>
 
         <!-- FORM -->
+        <!-- 백업 안내 -->
+        <div class="backup-notice">
+          💾 <strong>방명록 영구 보존 방법</strong> — 새 파일을 받기 전 <strong>"백업 저장"</strong> 버튼으로 데이터를 복사해두세요.<br>
+          새 파일에서 <strong>"백업 복원"</strong> 버튼으로 붙여넣으면 방명록이 그대로 살아납니다.
+        </div>
+
+        <!-- 백업/복원 버튼 -->
+        <div class="gbk-backup-bar">
+          <button class="bbtn bbtn-export" onclick="exportBackup()">💾 백업 저장</button>
+          <button class="bbtn bbtn-import" onclick="toggleRestore()">📂 백업 복원</button>
+          <button class="bbtn bbtn-clear" onclick="clearAll()">🗑 전체 삭제</button>
+        </div>
+
+        <!-- 복원 입력창 -->
+        <div class="restore-area" id="restoreArea">
+          <textarea id="restoreInput" placeholder="백업 저장 시 복사한 내용을 여기에 붙여넣으세요 (Ctrl+V)…"></textarea>
+          <div class="restore-row">
+            <button class="rbtn rbtn-ok" onclick="doRestore()">✓ 복원하기</button>
+            <button class="rbtn rbtn-cancel" onclick="toggleRestore()">✕ 취소</button>
+          </div>
+        </div>
+
         <div class="form-card">
           <div class="form-title">방명록 작성</div>
           <div class="form-row">
@@ -950,6 +1103,8 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--g50);color:var(--g90
           </div>
           <button class="form-submit" onclick="submitEntry()">방명록 남기기</button>
         </div>
+
+        </div><!-- /form-card -->
 
         <!-- ENTRIES -->
         <div class="entries-title">
@@ -1061,6 +1216,72 @@ function renderEntries(){
 }
 
 function escHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+// ── BACKUP / RESTORE ──
+function exportBackup(){
+  if(!entries.length){ alert('저장된 방명록이 없습니다.'); return; }
+  const json = JSON.stringify(entries, null, 2);
+  // 클립보드 복사 시도
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(json).then(()=>{
+      alert('✅ 방명록 데이터가 클립보드에 복사됐습니다!\n\n새 파일에서 "백업 복원" 버튼을 누르고 붙여넣기(Ctrl+V) 하세요.');
+    }).catch(()=> fallbackCopy(json));
+  } else { fallbackCopy(json); }
+}
+
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try{
+    document.execCommand('copy');
+    alert('✅ 방명록 데이터가 클립보드에 복사됐습니다!\n\n새 파일에서 "백업 복원" 버튼을 누르고 붙여넣기(Ctrl+V) 하세요.');
+  } catch(e){
+    prompt('아래 전체 텍스트를 복사해서 보관하세요:', text);
+  }
+  document.body.removeChild(ta);
+}
+
+function toggleRestore(){
+  const area = document.getElementById('restoreArea');
+  if(area.style.display === 'block'){
+    area.style.display = 'none';
+    document.getElementById('restoreInput').value = '';
+  } else {
+    area.style.display = 'block';
+    document.getElementById('restoreInput').focus();
+  }
+}
+
+function doRestore(){
+  const raw = document.getElementById('restoreInput').value.trim();
+  if(!raw){ alert('복원할 데이터를 붙여넣어 주세요.'); return; }
+  try{
+    const parsed = JSON.parse(raw);
+    if(!Array.isArray(parsed)) throw new Error();
+    // 기존 항목 제외하고 병합 (id 기준 중복 제거)
+    const existingIds = new Set(entries.map(e=>e.id));
+    const newEntries = parsed.filter(e=>!existingIds.has(e.id));
+    entries = [...parsed]; // 전체 복원
+    try{ localStorage.setItem('ictc_gbk', JSON.stringify(entries)); }catch(e){}
+    document.getElementById('restoreInput').value = '';
+    document.getElementById('restoreArea').style.display = 'none';
+    renderEntries();
+    alert('✅ 방명록이 성공적으로 복원됐습니다! (' + entries.length + '건)');
+  } catch(e){
+    alert('❌ 데이터 형식이 올바르지 않습니다. 백업 저장한 내용 전체를 붙여넣어 주세요.');
+  }
+}
+
+function clearAll(){
+  if(!entries.length){ alert('삭제할 방명록이 없습니다.'); return; }
+  if(!confirm('⚠️ 방명록 ' + entries.length + '건을 모두 삭제합니다.\n삭제 전 백업 저장을 권장합니다. 계속하시겠습니까?')) return;
+  entries = [];
+  try{ localStorage.removeItem('ictc_gbk'); }catch(e){}
+  renderEntries();
+}
 </script>
 </body>
 </html>
